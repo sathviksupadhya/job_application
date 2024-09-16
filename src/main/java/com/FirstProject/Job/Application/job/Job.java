@@ -1,6 +1,12 @@
 package com.FirstProject.Job.Application.job;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "Job_Table")
 public class Job {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //automatically manage ids by auto incrementing
     private Long id;
     private String description;
     private String title;
@@ -8,7 +14,13 @@ public class Job {
     private String maxSalary;
     private String location;
 
-    public Job(Long id, String description, String title, String minSalary, String maxSalary, String location) {
+    //no argument constructor is a need for jp entities(default const)
+    public Job() {
+    }
+
+    public Job(Long id, String description, String title,
+               String minSalary, String maxSalary, String location) {
+
         this.id = id;
         this.description = description;
         this.title = title;
